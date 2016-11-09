@@ -3,6 +3,9 @@
 const Promise = require('bluebird');
 const util = require('./util');
 
+/**
+*
+*/
 function GetCurrency(from, to) {
     return new Promise(function (resolve, reject) {
         util.GetContent('http://download.finance.yahoo.com/d/quotes.csv?e=.csv&f=sl1d1t1&s=' + from + to + '=X')
