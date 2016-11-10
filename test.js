@@ -1,24 +1,14 @@
 'use strict';
 
-const co = require('co');
-const Promise = require('bluebird');
+const bsd = require('beanstalkd');
 
-var arr = [ 1, 2, 3, 4, 5 ];
+const beanstalkd = new bsd.BeanstalkdClient('challenge.aftership.net', 9578);
 
-function handle(el) {
-	return new Promise(function (resolve, reject){
-		setTimeout(function(){
-			console.log(el);
-			resolve();
-		}, 1000);
-	});
-} 
+beanstalkd.connect().then(function (beanstalkd) {
 
-co(function *() {
-    for (var index in arr) {
-        var el = arr[index];
-        yield handle(el);
-    }
-}).then(function(){
-	console.log("done");
+  console.log('connected');
+  
+  // Close when done 
+  beanstalkd.quit();
 });
+

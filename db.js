@@ -11,12 +11,7 @@ function SaveDocument(connStr, document) {
 				reject(err);
 			}
 
-			db.collection('currency').insertOne({
-				from: 'USD',
-				to: 'HKD',
-				created_at: new Date(),
-				rate: '7.75'
-			}, function (error, result) {
+			db.collection('currency').insertOne(document, function (error, result) {
 				if (error) {
 					reject(error);
 				}

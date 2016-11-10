@@ -1,0 +1,7 @@
+host: "challenge.aftership.net"
+port: 11300
+handlers:
+    - "./currency_handler.js"
+watch:
+    - 'vence722'
+ignoreDefault: true
