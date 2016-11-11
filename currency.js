@@ -15,8 +15,8 @@ function getCurrency(from, to) {
 	return new Bluebird(function (resolve, reject) {
 		util.getContent('http://download.finance.yahoo.com/d/quotes.csv?e=.csv&f=sl1d1t1&s=' + from + to + '=X')
 			.then(function (content) {
-				let rate = util.round(content.split(',')[1], 2);
-				let curRate = new model.CurrencyRate(from, to, new Date().getTime(), rate);
+				let rate = util.round(content.split(',')[1], 2).toString();
+				let curRate = new model.CurrencyRate(from, to, new Date(), rate);
 				resolve(curRate);
 			}).catch(function (error) {
 				reject(error);

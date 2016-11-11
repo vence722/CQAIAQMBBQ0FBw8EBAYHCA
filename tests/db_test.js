@@ -9,7 +9,7 @@ const CONN_STR = 'mongodb://' + config.db_username + ':' + config.db_password + 
 
 describe('DB', function () {
 	it('Save a CurrencyRate record to mongodb', function (done) {
-		let curr = new model.CurrencyRate('CNY', 'HKD', new Date().getTime(), 1.14);
+		let curr = new model.CurrencyRate('CNY', 'HKD', new Date(), '1.14');
 		db.saveDocument(CONN_STR, curr).then(function () {
 			assert(true);
 			done();
