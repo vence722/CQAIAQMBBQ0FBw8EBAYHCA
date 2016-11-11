@@ -1,16 +1,21 @@
 'use strict';
 
-const Promise = require('bluebird');
+const Bluebird = require('bluebird');
 const MongoClient = require('mongodb').MongoClient;
 
-
-function SaveDocument(connStr, document) {
-	return new Promise(function (resolve, reject) {
+/**
+* the function to save a JSON document to MongoDB
+*
+* @param {string} connStr - the connection string for a mongodb data source
+* @param {object} document - the data to be saved to mongodb
+* @function
+*/
+function saveDocument(connStr, document) {
+	return new Bluebird(function (resolve, reject) {
 		MongoClient.connect(connStr, function (err, db) {
 			if (err) {
 				reject(err);
 			}
-
 			db.collection('currency').insertOne(document, function (error, result) {
 				if (error) {
 					reject(error);
@@ -22,4 +27,4 @@ function SaveDocument(connStr, document) {
 	});
 }
 
-exports.SaveDocument = SaveDocument;
+exports.saveDocument = saveDocument;
