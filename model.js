@@ -24,7 +24,7 @@ function CurrencyJob(from, to, retry_count, success_count) {
  *
  * @param {string} from - the currency name that tranfered from
  * @param {string} to - the currency name that tranfered to
- * @param {object} created_at - the Date object of the object creation date
+ * @param {number} created_at - the timestamp float64 value of the object creation date
  * @param {number} rate - the exchange rate between the 'from' and 'to' currencies
  * @constructor
  */
